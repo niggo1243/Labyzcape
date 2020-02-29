@@ -80,10 +80,11 @@ namespace Labyzcape
 
         public void PlaceCorridorForAll()
         {
+            //TODO this will be added from raycast click on specific corridor element
             CorridorPlacementModel corridorPlacementModel = new CorridorPlacementModel
             {
                 messageType = (int)GameConfig.MessageTypes.CorridorPlacement,
-                prefabType = 0,
+                prefabType = UnityEngine.Random.Range(0, this.corridorContainers.Count),
 
                 corridorPosition = new Vector3(UnityEngine.Random.Range(0, 20), 0, UnityEngine.Random.Range(0, 20)),
                 corridorDirection = 0

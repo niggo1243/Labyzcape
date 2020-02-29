@@ -886,6 +886,15 @@ MonoBehaviour:
   - corridorType: 0
     corridorPrefab: {fileID: 4282461308209887495, guid: 7b8288c8614c27447a34ebb35a57e7ca,
       type: 3}
+  - corridorType: 3
+    corridorPrefab: {fileID: 4282461308209887495, guid: c1fe412bd5500654d964974b9ac1bd90,
+      type: 3}
+  - corridorType: 1
+    corridorPrefab: {fileID: 4282461308209887495, guid: cd355fb881da57f4b9808c737d42af41,
+      type: 3}
+  - corridorType: 2
+    corridorPrefab: {fileID: 4282461308209887495, guid: 2e0055bba248c2e499127194dddb9dcf,
+      type: 3}
 --- !u!4 &1029299342
 Transform:
   m_ObjectHideFlags: 0
@@ -1898,7 +1907,6 @@ MonoBehaviour:
   autoCreatePlayer: 1
   playerSpawnMethod: 0
   spawnPrefabs: []
-  chatWindow: {fileID: 0}
   corridorManipulator: {fileID: 1029299341}
 --- !u!114 &1783103024
 MonoBehaviour:
