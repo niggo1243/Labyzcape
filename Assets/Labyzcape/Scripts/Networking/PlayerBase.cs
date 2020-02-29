@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-namespace Labyzcape
+namespace Labyzcape.Networking
 {
     public class PlayerBase : NetworkBehaviour
     {
@@ -17,7 +17,7 @@ namespace Labyzcape
         {
             base.OnStartLocalPlayer();
 
-            CorridorManipulator.Instance.InitManager();
+            SceneNetworkManipulator.Instance.InitManager();
         }
 
 

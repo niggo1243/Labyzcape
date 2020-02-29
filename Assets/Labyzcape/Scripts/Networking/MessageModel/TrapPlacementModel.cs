@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace Labyzcape.MessageModel
+namespace Labyzcape.Networking.MessageModel
 {
     [Serializable]
     public class TrapPlacementModel : BaseModel

@@ -6,10 +6,10 @@ using UnityEngine.Serialization;
 using Mirror;
 using System;
 
-using Labyzcape.MessageModel;
+using Labyzcape.Networking.MessageModel;
 using Labyzcape.Helpers;
 
-namespace Labyzcape
+namespace Labyzcape.Networking
 {
     [Serializable]
     public class CorridorContainer
@@ -19,7 +19,7 @@ namespace Labyzcape
         public GameObject corridorPrefab;
     }
 
-    public class CorridorManipulator : Singleton<CorridorManipulator>
+    public class SceneNetworkManipulator : Singleton<SceneNetworkManipulator>
     {
         [SerializeField]
         List<CorridorContainer> corridorContainers = new List<CorridorContainer>();

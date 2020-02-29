@@ -4,7 +4,7 @@ using UnityEngine;
 using Mirror;
 using System;
 
-namespace Labyzcape
+namespace Labyzcape.Networking
 {
     public class LabyzcapeNetworkManager : NetworkManager
     {
@@ -47,7 +47,7 @@ namespace Labyzcape
             // set it as the player
             NetworkServer.AddPlayerForConnection(connection, playergo);
 
-            CorridorManipulator.Instance.InitManager();
+            SceneNetworkManipulator.Instance.InitManager();
         }
     }
 }

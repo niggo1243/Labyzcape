@@ -6,6 +6,8 @@ namespace Labyzcape
 {
     public static class GameConfig
     {
+        public const string LAYER_MASK_CORRIDOR_STRING = "CorridorLayer";
+
         public enum CorridorTypes
         {
             FullCross = 0,
@@ -23,6 +25,12 @@ namespace Labyzcape
         {
             CorridorPlacement = 0,
             TrapPlacement = 1
+        }
+
+        public enum CorridorSliderTypes
+        {
+            VerticalCorridorSlider = 0,
+            HorizontalCorridorSlider = 1
         }
     }
 }
