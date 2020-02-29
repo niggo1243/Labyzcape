@@ -15,7 +15,6 @@ namespace Labyzcape
             this.networkAddress = hostname;
         }
 
-        public ChatWindowExample chatWindow;
         public CorridorManipulator corridorManipulator;
 
         public class CreatePlayerMessage : MessageBase
@@ -49,7 +48,6 @@ namespace Labyzcape
             // set it as the player
             NetworkServer.AddPlayerForConnection(connection, playergo);
 
-            chatWindow.gameObject.SetActive(true);
             this.corridorManipulator.InitManager();
         }
     }
