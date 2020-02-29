@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/AssetStore/Mirror/Examples/Pong/Scenes/Scene.unity
     guid: 89a84548859e3b643b4fb27984dc2b0d
+  - enabled: 1
+    path: Assets/Labyzcape/Scenes/Labyzcape.unity
+    guid: df087aa12e2cea4499f2f84ff897337b
   m_configObjects: {}

@@ -13,6 +13,14 @@ namespace Labyzcape
 
         public static event Action<PlayerBase, string> OnMessage;
 
+        public override void OnStartLocalPlayer()
+        {
+            base.OnStartLocalPlayer();
+
+            CorridorManipulator.Instance.InitManager();
+        }
+
+
         [Command]
         public void CmdSend(string message)
         {

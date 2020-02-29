@@ -15,8 +15,6 @@ namespace Labyzcape
             this.networkAddress = hostname;
         }
 
-        public CorridorManipulator corridorManipulator;
-
         public class CreatePlayerMessage : MessageBase
         {
             public string name;
@@ -31,6 +29,7 @@ namespace Labyzcape
         public override void OnClientConnect(NetworkConnection conn)
         {
             base.OnClientConnect(conn);
+
 
             // tell the server to create a player with this name
             conn.Send(new CreatePlayerMessage
@@ -48,7 +47,7 @@ namespace Labyzcape
             // set it as the player
             NetworkServer.AddPlayerForConnection(connection, playergo);
 
-            this.corridorManipulator.InitManager();
+            CorridorManipulator.Instance.InitManager();
         }
     }
 }
