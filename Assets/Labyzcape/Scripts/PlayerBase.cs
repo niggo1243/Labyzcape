@@ -17,7 +17,7 @@ namespace Labyzcape
         {
             base.OnStartLocalPlayer();
 
-            CorridorManipulator.Instance.InitManager();
+            //CorridorManipulator.Instance.InitManager();
         }
 
 
