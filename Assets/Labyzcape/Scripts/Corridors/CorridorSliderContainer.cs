@@ -19,7 +19,8 @@ namespace Labyzcape.Corridor
 
         public static bool isMoving = false;
 
-        public Transform helper;
+        [SerializeField]
+        private Transform helperInstance;
 
         [HideInInspector]
         public Coroutine slideCoroutine;
@@ -27,11 +28,9 @@ namespace Labyzcape.Corridor
         [SerializeField]
         private float maxRaycastDistance = 30, unlimitedPower = 10, stepDistance = 1.5f;
 
-        private int corridorToKillIndex;
-
         private void Start()
         {
-            PlayerBase.OnStartLocalPlayerEvent += OnStartLocalPlayer;
+            PlayerBase.OnStartLocalPlayerEvent += this.OnStartLocalPlayer;
         }
 
         private void OnStartLocalPlayer()
@@ -77,24 +76,24 @@ namespace Labyzcape.Corridor
             isMoving = true;
             int invert = inverted ? -1 : 1;
 
-            this.helper.rotation = Quaternion.identity;
-            this.helper.position = Vector3.zero;
+            this.helperInstance.rotation = Quaternion.identity;
+            this.helperInstance.position = Vector3.zero;
 
             foreach (CorridorBehaviour corridorBehaviour in this.dynamicCorridors)
             {
-                corridorBehaviour.transform.parent = this.helper;
+                corridorBehaviour.transform.parent = this.helperInstance;
             }
 
-            Vector3 nextTargetPos = this.helper.position + (this.moveAxis * this.stepDistance * invert);
+            Vector3 nextTargetPos = this.helperInstance.position + (this.moveAxis * this.stepDistance * invert);
 
-            while (Vector3.Distance(this.helper.transform.position, nextTargetPos) > GameConfig.MIN_DISTANCE_CHECK_LERP)
+            while (Vector3.Distance(this.helperInstance.transform.position, nextTargetPos) > GameConfig.MIN_DISTANCE_CHECK_LERP)
             {
-                this.helper.transform.position = Vector3.Lerp(this.helper.transform.position, nextTargetPos, this.unlimitedPower * Time.fixedDeltaTime);
+                this.helperInstance.transform.position = Vector3.Lerp(this.helperInstance.transform.position, nextTargetPos, this.unlimitedPower * Time.fixedDeltaTime);
 
                 yield return new WaitForFixedUpdate();
             }
 
-            this.helper.transform.position = nextTargetPos;
+            this.helperInstance.transform.position = nextTargetPos;
 
             foreach (CorridorBehaviour corridorBehaviour in this.dynamicCorridors)
             {

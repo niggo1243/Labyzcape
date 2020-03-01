@@ -23,19 +23,12 @@ namespace Labyzcape.Networking
     {
         public List<CorridorContainer> corridorContainers = new List<CorridorContainer>();
 
-        private PlayerBase playerBaseLocal;
-
         private int currentSelectedCorridorIndexToSpawn = 0;
-
-        private void Start()
-        {
-            foreach (CorridorContainer c in this.corridorContainers)
-                ClientScene.RegisterPrefab(c.corridorPrefab);
-        }
 
         public void InitManager()
         {
-            NetworkServer.Listen(GameConfig.MAX_CONNECTIONS_TO_LISTEN);
+            foreach (CorridorContainer c in this.corridorContainers)
+                ClientScene.RegisterPrefab(c.corridorPrefab);
         }
 
         public GameObject PlaceCorridorForAll(Vector3 startingPosition)

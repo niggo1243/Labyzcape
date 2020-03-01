@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: -5706916956175025330}
   - component: {fileID: -4434975301353371529}
   - component: {fileID: -641465560256084724}
-  - component: {fileID: -7684486895801452755}
+  - component: {fileID: 7531885606031445011}
   m_Layer: 0
   m_Name: CorridorHalfCross
   m_TagString: CorridorTag
@@ -261,6 +261,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   corRigidBody: {fileID: -4434975301353371529}
+  spawnProtection: 1
   isStatic: 0
 --- !u!54 &-4434975301353371529
 Rigidbody:
@@ -293,7 +294,7 @@ MonoBehaviour:
   sceneId: 0
   serverOnly: 0
   m_AssetId: 
---- !u!114 &-7684486895801452755
+--- !u!114 &7531885606031445011
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

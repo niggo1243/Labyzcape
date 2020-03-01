@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 7655945229000242768}
   - component: {fileID: 4588090173962634042}
   - component: {fileID: -764553583266685043}
-  - component: {fileID: 5668218430377605378}
+  - component: {fileID: 8946570882802609465}
   m_Layer: 0
   m_Name: CorridorFull
   m_TagString: CorridorTag
@@ -209,6 +209,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   corRigidBody: {fileID: 4588090173962634042}
+  spawnProtection: 1
   isStatic: 0
 --- !u!54 &4588090173962634042
 Rigidbody:
@@ -241,7 +242,7 @@ MonoBehaviour:
   sceneId: 0
   serverOnly: 0
   m_AssetId: 
---- !u!114 &5668218430377605378
+--- !u!114 &8946570882802609465
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

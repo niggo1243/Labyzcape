@@ -18,6 +18,10 @@ namespace Labyzcape.Networking
         {
             base.OnStartLocalPlayer();
 
+            Debug.Log("Starting local player");
+
+            NetworkServer.Listen(GameConfig.MAX_CONNECTIONS_TO_LISTEN);
+
             OnStartLocalPlayerEvent?.Invoke();
             SceneNetworkManipulator.Instance.InitManager();
         }

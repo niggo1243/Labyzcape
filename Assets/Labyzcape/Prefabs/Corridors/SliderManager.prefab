@@ -108,7 +108,7 @@ MonoBehaviour:
   dynamicCorridors: []
   corridorSliderType: 0
   moveAxis: {x: 1, y: 0, z: 0}
-  helper: {fileID: 0}
+  helper: {fileID: 7673708360062136275, guid: 54610272be59e02458aee4e1c901ee1f, type: 3}
   maxRaycastDistance: 30
   unlimitedPower: 0.6
   stepDistance: 10
