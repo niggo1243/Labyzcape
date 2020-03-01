@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Labyzcape.Networking;
+
 namespace Labyzcape.Corridor
 {
     public class CorridorArrowBehaviour : MonoBehaviour, IMouseClickable
@@ -12,9 +14,23 @@ namespace Labyzcape.Corridor
         [SerializeField]
         private bool inverseSlide;
 
+        [SerializeField]
+        private Transform corridorStartingPositionTransform;
+
+        private void Start()
+        {
+            if (this.corridorStartingPositionTransform == null)
+            {
+                this.corridorStartingPositionTransform = this.transform;
+            }
+        }
+
         public void GotClicked()
         {
             //this.corridorSlider.SlideCorridors(, this.inverseSlide);
+            GameObject corridor = SceneNetworkManipulator.Instance.PlaceCorridorForAll(corridorStartingPositionTransform.position);
+
+            this.targetCorridorSlider.SlideCorridors(corridor.GetComponent<CorridorBehaviour>(), this.inverseSlide);
         }
 
     }

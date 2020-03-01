@@ -6,6 +6,7 @@ using Labyzcape.Helpers;
 using Labyzcape.Networking;
 
 using System;
+using Mirror;
 
 namespace Labyzcape.Corridor
 {
@@ -41,7 +42,7 @@ namespace Labyzcape.Corridor
             this.dynamicCorridors.Add(newCorridor);
 
             //TODO start coroutine to move the corridors to the desired dest and destroy the corridor to kill
-            HandleCoroutines.StartOneCoroutine(SceneNetworkManipulator.Instance, this.slideCoroutine, out this.slideCoroutine, this.SlideCorridorsMovement());
+            HandleCoroutines.StartOneCoroutine(SceneNetworkManipulator.Instance, this.slideCoroutine, out this.slideCoroutine, this.SlideCorridorsMovement(inverse));
         }
 
         public void RefreshCorridorsList()
@@ -55,6 +56,9 @@ namespace Labyzcape.Corridor
             {
                 CorridorBehaviour corridorBehaviour = raycastHit.collider.GetComponent<CorridorBehaviour>();
 
+                if (corridorBehaviour == null && raycastHit.collider.transform.parent != null)
+                    corridorBehaviour = raycastHit.collider.transform.parent.GetComponent<CorridorBehaviour>();
+
                 if (corridorBehaviour != null && !corridorBehaviour.IsStatic)
                 {
                     this.dynamicCorridors.Add(corridorBehaviour);
@@ -63,15 +67,16 @@ namespace Labyzcape.Corridor
         }
 
 
-        private IEnumerator SlideCorridorsMovement()
+        private IEnumerator SlideCorridorsMovement(bool inverted)
         {
+            int invert = inverted ? -1 : 1;
             int counter = 0;
 
             while (counter ++ < 12000)
             {
                 foreach(CorridorBehaviour corridorBehaviour in this.dynamicCorridors)
                 {
-                    corridorBehaviour.corRigidBody.AddForce(this.moveAxis * this.unlimitedPower);
+                    corridorBehaviour.corRigidBody.AddForce(this.moveAxis * this.unlimitedPower * invert);
                 }
 
                 yield return new WaitForFixedUpdate();
@@ -82,12 +87,14 @@ namespace Labyzcape.Corridor
                 CorridorBehaviour corridorBehaviourToDestroy = this.dynamicCorridors[this.corridorToKillIndex];
                 this.dynamicCorridors.RemoveAt(this.corridorToKillIndex);
 
-                MonoBehaviour.Destroy(corridorBehaviourToDestroy);
+                NetworkServer.Destroy(corridorBehaviourToDestroy.gameObject);
             }
             catch (Exception e)
             {
                 Debug.LogError(e.Message);
             }
+
+            this.RefreshCorridorsList();
         }
     }
 }

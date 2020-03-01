@@ -27,9 +27,10 @@ namespace Labyzcape.Corridor
                 this.corRigidBody = this.GetComponent<Rigidbody>();
         }
 
-        public override void OnStartServer()
+
+        public override void OnStartClient()
         {
-            base.OnStartServer();
+            base.OnStartClient();
         }
     }
 }

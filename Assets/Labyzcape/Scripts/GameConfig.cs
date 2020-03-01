@@ -9,6 +9,8 @@ namespace Labyzcape
         public const string LAYER_MASK_CORRIDOR_STRING = "CorridorLayer";
         public const string GOT_CLICKED_INTERFACE_METHOD_NAME = "GotClicked";
 
+        public const int MAX_CONNECTIONS_TO_LISTEN = 10;
+
         public enum CorridorTypes
         {
             FullCross = 0,

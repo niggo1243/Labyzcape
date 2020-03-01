@@ -25,6 +25,9 @@ namespace Labyzcape
                 if (this.raycastHit.collider != null)
                 {
                     this.raycastHit.collider.SendMessage(GameConfig.GOT_CLICKED_INTERFACE_METHOD_NAME);
+
+                    if (this.raycastHit.collider.transform.parent != null)
+                        this.raycastHit.collider.transform.parent.SendMessage(GameConfig.GOT_CLICKED_INTERFACE_METHOD_NAME);
                 }
             }
         }
