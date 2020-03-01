@@ -166,13 +166,16 @@
     <Compile Include="Assets\AssetStore\Standard Assets\Vehicles\Car\Scripts\SkidTrail.cs" />
     <Compile Include="Assets\AssetStore\Standard Assets\Vehicles\Car\Scripts\Suspension.cs" />
     <Compile Include="Assets\AssetStore\Standard Assets\Vehicles\Car\Scripts\WheelEffects.cs" />
+    <Compile Include="Assets\Labyzcape\Scripts\ClickOnObjectsFromScreen.cs" />
     <Compile Include="Assets\Labyzcape\Scripts\Corridors\CorridorArrowBehaviour.cs" />
     <Compile Include="Assets\Labyzcape\Scripts\Corridors\CorridorBehaviour.cs" />
     <Compile Include="Assets\Labyzcape\Scripts\Corridors\CorridorManager.cs" />
     <Compile Include="Assets\Labyzcape\Scripts\Corridors\CorridorSliderContainer.cs" />
     <Compile Include="Assets\Labyzcape\Scripts\GameConfig.cs" />
+    <Compile Include="Assets\Labyzcape\Scripts\Helpers\ArrayHelper.cs" />
     <Compile Include="Assets\Labyzcape\Scripts\Helpers\HandleCoroutines.cs" />
     <Compile Include="Assets\Labyzcape\Scripts\Helpers\Singleton.cs" />
+    <Compile Include="Assets\Labyzcape\Scripts\IMouseClickable.cs" />
     <Compile Include="Assets\Labyzcape\Scripts\Networking\LabyzcapeNetworkManager.cs" />
     <Compile Include="Assets\Labyzcape\Scripts\Networking\MessageModel\BaseModel.cs" />
     <Compile Include="Assets\Labyzcape\Scripts\Networking\MessageModel\CorridorPlacementModel.cs" />

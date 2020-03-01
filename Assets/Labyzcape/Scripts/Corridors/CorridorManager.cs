@@ -11,7 +11,6 @@ namespace Labyzcape.Corridor
     public class CorridorManager : MonoBehaviour
     {
         public List<CorridorBehaviour> staticCorridors = new List<CorridorBehaviour>();
-
         public List<CorridorSliderContainer> corridorSliderContainers = new List<CorridorSliderContainer>();
 
         /// <summary>

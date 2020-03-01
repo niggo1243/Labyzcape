@@ -30,7 +30,7 @@ namespace Labyzcape.Networking
         {
             base.OnClientConnect(conn);
 
-
+            
             // tell the server to create a player with this name
             conn.Send(new CreatePlayerMessage
             {
@@ -46,8 +46,6 @@ namespace Labyzcape.Networking
 
             // set it as the player
             NetworkServer.AddPlayerForConnection(connection, playergo);
-
-            SceneNetworkManipulator.Instance.InitManager();
         }
     }
 }

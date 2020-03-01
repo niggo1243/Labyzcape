@@ -5,6 +5,8 @@ using UnityEngine;
 using Labyzcape.Helpers;
 using Labyzcape.Networking;
 
+using System;
+
 namespace Labyzcape.Corridor
 {
     public class CorridorSliderContainer : MonoBehaviour
@@ -18,9 +20,19 @@ namespace Labyzcape.Corridor
         public Coroutine slideCoroutine;
 
         [SerializeField]
-        private float maxRaycastDistance = 30;
+        private float maxRaycastDistance = 30, unlimitedPower = 10, stepDistance = 1.5f;
 
         private int corridorToKillIndex;
+
+        private void Start()
+        {
+            PlayerBase.OnStartLocalPlayerEvent += OnStartLocalPlayer;
+        }
+
+        private void OnStartLocalPlayer()
+        {
+            this.RefreshCorridorsList();
+        }
 
         public void SlideCorridors(CorridorBehaviour newCorridor, bool inverse)
         {
@@ -35,7 +47,7 @@ namespace Labyzcape.Corridor
         public void RefreshCorridorsList()
         {
             RaycastHit[] raycastHits = Physics.RaycastAll(this.transform.position, this.transform.forward, 
-                this.maxRaycastDistance, LayerMask.NameToLayer(GameConfig.LAYER_MASK_CORRIDOR_STRING));
+                this.maxRaycastDistance);
 
             this.dynamicCorridors.Clear();
 
@@ -43,18 +55,38 @@ namespace Labyzcape.Corridor
             {
                 CorridorBehaviour corridorBehaviour = raycastHit.collider.GetComponent<CorridorBehaviour>();
 
-                if (corridorBehaviour != null)
+                if (corridorBehaviour != null && !corridorBehaviour.IsStatic)
                 {
                     this.dynamicCorridors.Add(corridorBehaviour);
                 }
             }
         }
 
+
         private IEnumerator SlideCorridorsMovement()
         {
-            while (true)
+            int counter = 0;
+
+            while (counter ++ < 12000)
             {
-                yield return new WaitForEndOfFrame();
+                foreach(CorridorBehaviour corridorBehaviour in this.dynamicCorridors)
+                {
+                    corridorBehaviour.corRigidBody.AddForce(this.moveAxis * this.unlimitedPower);
+                }
+
+                yield return new WaitForFixedUpdate();
+            }
+
+            try
+            {
+                CorridorBehaviour corridorBehaviourToDestroy = this.dynamicCorridors[this.corridorToKillIndex];
+                this.dynamicCorridors.RemoveAt(this.corridorToKillIndex);
+
+                MonoBehaviour.Destroy(corridorBehaviourToDestroy);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e.Message);
             }
         }
     }

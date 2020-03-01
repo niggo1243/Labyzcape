@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Labyzcape.Corridor
 {
-    public class CorridorArrowBehaviour : MonoBehaviour
+    public class CorridorArrowBehaviour : MonoBehaviour, IMouseClickable
     {
         [SerializeField]
         private CorridorSliderContainer targetCorridorSlider;
@@ -12,9 +12,10 @@ namespace Labyzcape.Corridor
         [SerializeField]
         private bool inverseSlide;
 
-        public void InitSlide()
+        public void GotClicked()
         {
-            //this.corridorSlider.SlideCorridors();
+            //this.corridorSlider.SlideCorridors(, this.inverseSlide);
         }
+
     }
 }

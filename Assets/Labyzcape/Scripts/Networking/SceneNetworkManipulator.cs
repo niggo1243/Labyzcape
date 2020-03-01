@@ -21,66 +21,71 @@ namespace Labyzcape.Networking
 
     public class SceneNetworkManipulator : Singleton<SceneNetworkManipulator>
     {
-        [SerializeField]
-        List<CorridorContainer> corridorContainers = new List<CorridorContainer>();
+        public List<CorridorContainer> corridorContainers = new List<CorridorContainer>();
 
         private PlayerBase playerBaseLocal;
 
+        private int currentSelectedCorridorIndexToSpawn = 0;
+
         public void InitManager()
         {
-            PlayerBase.OnMessage += OnMessageReceivedFromPlayer;
+            //PlayerBase.OnMessage += OnMessageReceivedFromPlayer;
 
-            this.playerBaseLocal = NetworkClient.connection.identity.GetComponent<PlayerBase>();
+            //this.playerBaseLocal = NetworkClient.connection.identity.GetComponent<PlayerBase>();
+
+            NetworkServer.Listen(10);
         }
 
-        private void OnMessageReceivedFromPlayer(PlayerBase playerBase, string message)
-        {
-            BaseModel model = null;
-            try
-            {
-                model = JsonUtility.FromJson<BaseModel>(message);
-            }
-            catch (Exception e)
-            {
-                Debug.LogError(e.Message);
-                return;
-            }
+        //private void OnMessageReceivedFromPlayer(PlayerBase playerBase, string message)
+        //{
+        //    BaseModel model = null;
+        //    try
+        //    {
+        //        model = JsonUtility.FromJson<BaseModel>(message);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Debug.LogError(e.Message);
+        //        return;
+        //    }
 
-            if (model == null)
-            {
-                Debug.LogError("model is empty");
-                return;
-            }
+        //    if (model == null)
+        //    {
+        //        Debug.LogError("model is empty");
+        //        return;
+        //    }
 
-            //TODO check if player is the manipulator
+        //    //TODO check if player is the manipulator
 
-            //TODO check messagetype in switch statement
+        //    //TODO check messagetype in switch statement
 
-            switch (model.messageType)
-            {
-                case (int)GameConfig.MessageTypes.CorridorPlacement:
+        //    switch (model.messageType)
+        //    {
+        //        case (int)GameConfig.MessageTypes.CorridorPlacement:
 
-                    CorridorPlacementModel corridorPlacementModel = JsonUtility.FromJson<CorridorPlacementModel>(message);
+        //            CorridorPlacementModel corridorPlacementModel = JsonUtility.FromJson<CorridorPlacementModel>(message);
 
-                    CorridorContainer targetContainerToPlace = this.corridorContainers.Find((container) =>
-                    {
-                        return model.prefabType == (int)container.corridorType;
-                    });
+        //            CorridorContainer targetContainerToPlace = this.corridorContainers.Find((container) =>
+        //            {
+        //                return model.prefabType == (int)container.corridorType;
+        //            });
 
-                    GameObject instance = MonoBehaviour.Instantiate(targetContainerToPlace.corridorPrefab);
-                    instance.name = targetContainerToPlace.corridorType.ToString();
+        //            GameObject instance = MonoBehaviour.Instantiate(targetContainerToPlace.corridorPrefab);
+        //            instance.name = targetContainerToPlace.corridorType.ToString();
 
-                    instance.transform.position = corridorPlacementModel.corridorPosition;
-                    //TODO add rotation
+                    
 
-                    break;
-                case (int)GameConfig.MessageTypes.TrapPlacement:
-                    break;
-            }
+        //            instance.transform.position = corridorPlacementModel.corridorPosition;
+        //            //TODO add rotation
 
-        }
+        //            break;
+        //        case (int)GameConfig.MessageTypes.TrapPlacement:
+        //            break;
+        //    }
 
-        public void PlaceCorridorForAll()
+        //}
+
+        public GameObject PlaceCorridorForAll()
         {
             //TODO this will be added from raycast click on specific corridor element
             CorridorPlacementModel corridorPlacementModel = new CorridorPlacementModel
@@ -92,16 +97,35 @@ namespace Labyzcape.Networking
                 corridorDirection = 0
             };
 
-            string jsonString = JsonUtility.ToJson(corridorPlacementModel);
+            //string jsonString = JsonUtility.ToJson(corridorPlacementModel);
 
-            this.playerBaseLocal.CmdSend(jsonString);
+            //this.playerBaseLocal.CmdSend(jsonString);
+
+            GameObject instance = MonoBehaviour.Instantiate(this.corridorContainers[this.currentSelectedCorridorIndexToSpawn].corridorPrefab);
+            instance.name = this.corridorContainers[this.currentSelectedCorridorIndexToSpawn].corridorType.ToString();
+            instance.transform.position = corridorPlacementModel.corridorPosition;
+
+            ClientScene.RegisterPrefab(instance);
+            NetworkServer.Spawn(instance);
+
+            return instance;
         }
+
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.K))
             {
                 this.PlaceCorridorForAll();
+            }
+
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                this.currentSelectedCorridorIndexToSpawn = ArrayHelper.PointerHandler(true, this.currentSelectedCorridorIndexToSpawn, this.corridorContainers.Count);
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                this.currentSelectedCorridorIndexToSpawn = ArrayHelper.PointerHandler(false, this.currentSelectedCorridorIndexToSpawn, this.corridorContainers.Count);
             }
         }
     }

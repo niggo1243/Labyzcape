@@ -12,11 +12,13 @@ namespace Labyzcape.Networking
         public string playerName;
 
         public static event Action<PlayerBase, string> OnMessage;
+        public static event Action OnStartLocalPlayerEvent;
 
         public override void OnStartLocalPlayer()
         {
             base.OnStartLocalPlayer();
 
+            OnStartLocalPlayerEvent?.Invoke();
             SceneNetworkManipulator.Instance.InitManager();
         }
 

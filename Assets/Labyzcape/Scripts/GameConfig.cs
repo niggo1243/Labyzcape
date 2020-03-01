@@ -7,6 +7,7 @@ namespace Labyzcape
     public static class GameConfig
     {
         public const string LAYER_MASK_CORRIDOR_STRING = "CorridorLayer";
+        public const string GOT_CLICKED_INTERFACE_METHOD_NAME = "GotClicked";
 
         public enum CorridorTypes
         {
