@@ -7,9 +7,13 @@ namespace Labyzcape
     public static class GameConfig
     {
         public const string LAYER_MASK_CORRIDOR_STRING = "CorridorLayer";
+        public const string TAG_CORRIDOR_STRING = "CorridorTag";
+
         public const string GOT_CLICKED_INTERFACE_METHOD_NAME = "GotClicked";
 
         public const int MAX_CONNECTIONS_TO_LISTEN = 10;
+
+        public const float MIN_DISTANCE_CHECK_LERP = .07f;
 
         public enum CorridorTypes
         {

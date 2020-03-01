@@ -27,7 +27,8 @@ namespace Labyzcape.Corridor
 
         public void GotClicked()
         {
-            //this.corridorSlider.SlideCorridors(, this.inverseSlide);
+            if (CorridorSliderContainer.isMoving) return;
+
             GameObject corridor = SceneNetworkManipulator.Instance.PlaceCorridorForAll(corridorStartingPositionTransform.position);
 
             this.targetCorridorSlider.SlideCorridors(corridor.GetComponent<CorridorBehaviour>(), this.inverseSlide);

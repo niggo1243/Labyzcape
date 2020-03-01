@@ -169,6 +169,7 @@
     <Compile Include="Assets\Labyzcape\Scripts\ClickOnObjectsFromScreen.cs" />
     <Compile Include="Assets\Labyzcape\Scripts\Corridors\CorridorArrowBehaviour.cs" />
     <Compile Include="Assets\Labyzcape\Scripts\Corridors\CorridorBehaviour.cs" />
+    <Compile Include="Assets\Labyzcape\Scripts\Corridors\CorridorKillzone.cs" />
     <Compile Include="Assets\Labyzcape\Scripts\Corridors\CorridorManager.cs" />
     <Compile Include="Assets\Labyzcape\Scripts\Corridors\CorridorSliderContainer.cs" />
     <Compile Include="Assets\Labyzcape\Scripts\GameConfig.cs" />

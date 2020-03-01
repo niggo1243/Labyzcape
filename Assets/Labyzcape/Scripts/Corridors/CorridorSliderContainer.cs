@@ -17,6 +17,8 @@ namespace Labyzcape.Corridor
 
         public Vector3 moveAxis = Vector3.right;
 
+        public static bool isMoving = false;
+
         public Transform helper;
 
         [HideInInspector]
@@ -39,14 +41,13 @@ namespace Labyzcape.Corridor
 
         public void SlideCorridors(CorridorBehaviour newCorridor, bool inverse)
         {
-            this.RefreshCorridorsList();
+            if (isMoving) return;
 
-            this.corridorToKillIndex = inverse ? 0 : this.dynamicCorridors.Count - 1;
+            this.RefreshCorridorsList();
 
             this.dynamicCorridors.Add(newCorridor);
 
-            //TODO start coroutine to move the corridors to the desired dest and destroy the corridor to kill
-            HandleCoroutines.StartOneCoroutine(SceneNetworkManipulator.Instance, this.slideCoroutine, out this.slideCoroutine, this.SlideCorridorsMovement(inverse));
+            HandleCoroutines.StartOneCoroutine(SceneNetworkManipulator.Instance, this.slideCoroutine, out this.slideCoroutine, this.SlideCorridorsMovement(newCorridor, inverse));
         }
 
         public void RefreshCorridorsList()
@@ -71,10 +72,10 @@ namespace Labyzcape.Corridor
         }
 
 
-        private IEnumerator SlideCorridorsMovement(bool inverted)
+        private IEnumerator SlideCorridorsMovement(CorridorBehaviour newCorridor, bool inverted)
         {
+            isMoving = true;
             int invert = inverted ? -1 : 1;
-            int counter = 0;
 
             this.helper.rotation = Quaternion.identity;
             this.helper.position = Vector3.zero;
@@ -86,7 +87,7 @@ namespace Labyzcape.Corridor
 
             Vector3 nextTargetPos = this.helper.position + (this.moveAxis * this.stepDistance * invert);
 
-            while (Vector3.Distance(this.helper.transform.position, nextTargetPos) > .01f)
+            while (Vector3.Distance(this.helper.transform.position, nextTargetPos) > GameConfig.MIN_DISTANCE_CHECK_LERP)
             {
                 this.helper.transform.position = Vector3.Lerp(this.helper.transform.position, nextTargetPos, this.unlimitedPower * Time.fixedDeltaTime);
 
@@ -97,20 +98,15 @@ namespace Labyzcape.Corridor
 
             foreach (CorridorBehaviour corridorBehaviour in this.dynamicCorridors)
             {
+                if (corridorBehaviour == null) continue;
+
                 corridorBehaviour.transform.parent = null;
             }
 
-            try
-            {
-                CorridorBehaviour corridorBehaviourToDestroy = this.dynamicCorridors[this.corridorToKillIndex];
-                this.dynamicCorridors.RemoveAt(this.corridorToKillIndex);
+            this.dynamicCorridors.TrimExcess();
 
-                NetworkServer.Destroy(corridorBehaviourToDestroy.gameObject);
-            }
-            catch (Exception e)
-            {
-                Debug.LogError(e.Message);
-            }
+            newCorridor.spawnProtection = false;
+            isMoving = false;
         }
     }
 }

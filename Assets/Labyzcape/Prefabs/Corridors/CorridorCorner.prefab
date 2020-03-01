@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 935367873828733667}
   - component: {fileID: 4296426750792711648}
   - component: {fileID: 1770484578465159036}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Wall_Back
-  m_TagString: Untagged
+  m_TagString: CorridorTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,9 +68,9 @@ GameObject:
   - component: {fileID: 7596597975434407730}
   - component: {fileID: -658036240419197183}
   - component: {fileID: -1500079877079403686}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CorridorCorner
-  m_TagString: Untagged
+  m_TagString: CorridorTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -217,9 +217,9 @@ GameObject:
   - component: {fileID: 2470157872654377477}
   - component: {fileID: 3048576795976739740}
   - component: {fileID: 2088705593404204899}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: CorridorTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -270,9 +270,9 @@ GameObject:
   - component: {fileID: 8654951186238383486}
   - component: {fileID: 7436450106147169767}
   - component: {fileID: 3049084739630659595}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Wall_Left
-  m_TagString: Untagged
+  m_TagString: CorridorTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -323,9 +323,9 @@ GameObject:
   - component: {fileID: 3088545490590030325}
   - component: {fileID: 8132254744123920685}
   - component: {fileID: 2400446671690326825}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Wall_Corner
-  m_TagString: Untagged
+  m_TagString: CorridorTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

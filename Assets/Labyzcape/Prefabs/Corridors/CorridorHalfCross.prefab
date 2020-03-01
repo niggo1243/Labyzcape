@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 199069865821627403}
   - component: {fileID: 5138050908846704524}
   - component: {fileID: 2346860125648021756}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: CorridorTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,9 +64,9 @@ GameObject:
   - component: {fileID: 923980003963985705}
   - component: {fileID: 352649124846478627}
   - component: {fileID: 2382277931253211447}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: MiniCorner_Right
-  m_TagString: Untagged
+  m_TagString: CorridorTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,9 +117,9 @@ GameObject:
   - component: {fileID: 2878673204722161343}
   - component: {fileID: 7595652826764849355}
   - component: {fileID: 2242412175662537484}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: MiniCorner_Left
-  m_TagString: Untagged
+  m_TagString: CorridorTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -174,9 +174,9 @@ GameObject:
   - component: {fileID: -4434975301353371529}
   - component: {fileID: -641465560256084724}
   - component: {fileID: -7684486895801452755}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CorridorHalfCross
-  m_TagString: Untagged
+  m_TagString: CorridorTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -323,9 +323,9 @@ GameObject:
   - component: {fileID: 9158115105527919734}
   - component: {fileID: 2960684048655586410}
   - component: {fileID: 3908011101885018765}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: CorridorTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

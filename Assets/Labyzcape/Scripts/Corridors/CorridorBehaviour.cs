@@ -10,6 +10,8 @@ namespace Labyzcape.Corridor
     {
         public Rigidbody corRigidBody;
 
+        public bool spawnProtection = true;
+
         [SerializeField]
         private bool isStatic = false;
         public bool IsStatic

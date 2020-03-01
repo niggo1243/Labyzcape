@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8035177583531562954}
   - component: {fileID: 1251280686154942238}
   - component: {fileID: 8543681245089538828}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: LowerRight
-  m_TagString: Untagged
+  m_TagString: CorridorTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,9 +64,9 @@ GameObject:
   - component: {fileID: 6824419149113140279}
   - component: {fileID: 6167080592786831339}
   - component: {fileID: 1561055689678194687}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Corner_UpperRight
-  m_TagString: Untagged
+  m_TagString: CorridorTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,9 +121,9 @@ GameObject:
   - component: {fileID: 4588090173962634042}
   - component: {fileID: -764553583266685043}
   - component: {fileID: 5668218430377605378}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CorridorFull
-  m_TagString: Untagged
+  m_TagString: CorridorTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -271,9 +271,9 @@ GameObject:
   - component: {fileID: 8308211662133368297}
   - component: {fileID: 5883307900970487514}
   - component: {fileID: 6588435209436772803}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: CorridorTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -324,9 +324,9 @@ GameObject:
   - component: {fileID: 1094962553231413965}
   - component: {fileID: 7167531087506115937}
   - component: {fileID: 2073815922855404855}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: LowerLeft
-  m_TagString: Untagged
+  m_TagString: CorridorTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -377,9 +377,9 @@ GameObject:
   - component: {fileID: 1211323059224256218}
   - component: {fileID: 2611643434689902262}
   - component: {fileID: 1105485858196753785}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: UpperLeft
-  m_TagString: Untagged
+  m_TagString: CorridorTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
