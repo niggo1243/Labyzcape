@@ -1004,6 +1004,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff23edf74ce635f4fb131628ee24a56b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &781845442
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 781845443}
+  m_Layer: 0
+  m_Name: TransformHelper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &781845443
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781845442}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &802543501
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2133,7 +2163,7 @@ PrefabInstance:
     - target: {fileID: 2454502433234924775, guid: 80a8db6ac8f0724408be6602833c21b8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.45
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4282313281566645162, guid: 80a8db6ac8f0724408be6602833c21b8,
         type: 3}
@@ -2160,6 +2190,16 @@ PrefabInstance:
       propertyPath: dynamicCorridors.Array.data[2]
       value: 
       objectReference: {fileID: 802543503}
+    - target: {fileID: 4282313281566645162, guid: 80a8db6ac8f0724408be6602833c21b8,
+        type: 3}
+      propertyPath: helper
+      value: 
+      objectReference: {fileID: 781845443}
+    - target: {fileID: 4282313281566645162, guid: 80a8db6ac8f0724408be6602833c21b8,
+        type: 3}
+      propertyPath: stepDistance
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6507131611178990973, guid: 80a8db6ac8f0724408be6602833c21b8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2173,7 +2213,7 @@ PrefabInstance:
     - target: {fileID: 6507131611178990973, guid: 80a8db6ac8f0724408be6602833c21b8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.45
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7860300568536852235, guid: 80a8db6ac8f0724408be6602833c21b8,
         type: 3}
@@ -3941,7 +3981,7 @@ PrefabInstance:
     - target: {fileID: 2454502433234924775, guid: 80a8db6ac8f0724408be6602833c21b8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.45
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4282313281566645162, guid: 80a8db6ac8f0724408be6602833c21b8,
         type: 3}
@@ -3973,10 +4013,20 @@ PrefabInstance:
       propertyPath: dynamicCorridors.Array.data[2]
       value: 
       objectReference: {fileID: 812796650}
+    - target: {fileID: 4282313281566645162, guid: 80a8db6ac8f0724408be6602833c21b8,
+        type: 3}
+      propertyPath: helper
+      value: 
+      objectReference: {fileID: 781845443}
+    - target: {fileID: 4282313281566645162, guid: 80a8db6ac8f0724408be6602833c21b8,
+        type: 3}
+      propertyPath: stepDistance
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6507131611178990973, guid: 80a8db6ac8f0724408be6602833c21b8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.45
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7860300568536852235, guid: 80a8db6ac8f0724408be6602833c21b8,
         type: 3}

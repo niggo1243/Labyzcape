@@ -17,6 +17,8 @@ namespace Labyzcape.Corridor
 
         public Vector3 moveAxis = Vector3.right;
 
+        public Transform helper;
+
         [HideInInspector]
         public Coroutine slideCoroutine;
 
@@ -37,6 +39,8 @@ namespace Labyzcape.Corridor
 
         public void SlideCorridors(CorridorBehaviour newCorridor, bool inverse)
         {
+            this.RefreshCorridorsList();
+
             this.corridorToKillIndex = inverse ? 0 : this.dynamicCorridors.Count - 1;
 
             this.dynamicCorridors.Add(newCorridor);
@@ -72,14 +76,28 @@ namespace Labyzcape.Corridor
             int invert = inverted ? -1 : 1;
             int counter = 0;
 
-            while (counter ++ < 12000)
+            this.helper.rotation = Quaternion.identity;
+            this.helper.position = Vector3.zero;
+
+            foreach (CorridorBehaviour corridorBehaviour in this.dynamicCorridors)
             {
-                foreach(CorridorBehaviour corridorBehaviour in this.dynamicCorridors)
-                {
-                    corridorBehaviour.corRigidBody.AddForce(this.moveAxis * this.unlimitedPower * invert);
-                }
+                corridorBehaviour.transform.parent = this.helper;
+            }
+
+            Vector3 nextTargetPos = this.helper.position + (this.moveAxis * this.stepDistance * invert);
+
+            while (Vector3.Distance(this.helper.transform.position, nextTargetPos) > .01f)
+            {
+                this.helper.transform.position = Vector3.Lerp(this.helper.transform.position, nextTargetPos, this.unlimitedPower * Time.fixedDeltaTime);
 
                 yield return new WaitForFixedUpdate();
+            }
+
+            this.helper.transform.position = nextTargetPos;
+
+            foreach (CorridorBehaviour corridorBehaviour in this.dynamicCorridors)
+            {
+                corridorBehaviour.transform.parent = null;
             }
 
             try
@@ -93,8 +111,6 @@ namespace Labyzcape.Corridor
             {
                 Debug.LogError(e.Message);
             }
-
-            this.RefreshCorridorsList();
         }
     }
 }
